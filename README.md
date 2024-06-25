@@ -27,14 +27,20 @@ Pastikan Anda telah menginstal software berikut sebelum menjalankan proyek ini:
 
 Dalam direktori proyek, Anda dapat menjalankan perintah berikut:
 
-### `npm start`
-
 Menjalankan server dalam mode produksi.
 
-### `npm run start-dev`
+```sh
+npm start
+```
 
 Menjalankan server dalam mode pengembangan menggunakan nodemon, yang akan memantau perubahan dalam kode dan me-restart server secara otomatis.
 
-### `npm run lint`
+```sh
+npm run start-dev
+```
 
-Menjalankan ESLint untuk memeriksa kode Anda dan memastikan bahwa itu memenuhi standar kualitas kode yang ditentukan.
+Menjalankan ESLint untuk memeriksa kode dan memastikan bahwa itu memenuhi standar kualitas kode yang ditentukan.
+
+```sh
+npm run lint
+```
