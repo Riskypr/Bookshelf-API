@@ -14,8 +14,7 @@ Pastikan Anda telah menginstal software berikut sebelum menjalankan proyek ini:
 1. Clone repositori ini:
 
    ```sh
-   git clone https://github.com/risky-prasetyo/bookshelf-api.git
-   cd bookshelf-api
+   git clone https://github.com/Riskypr/Bookshelf-API.git
    ```
 
 2. Instal dependensi:
