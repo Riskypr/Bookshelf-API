@@ -1,46 +1,107 @@
 # Bookshelf API
 
-Bookshelf API adalah sebuah aplikasi backend yang dibuat menggunakan Hapi.js untuk mengelola koleksi buku.
+Bookshelf API adalah sebuah aplikasi backend yang menggunakan framework Hapi.js untuk mengelola koleksi buku.
+
+## Deskripsi
+
+API ini menyediakan endpoint-endpoint untuk menambah, mengambil, memperbarui, dan menghapus informasi buku dalam koleksi.
 
 ## Persyaratan
 
-Pastikan Anda telah menginstal software berikut sebelum menjalankan proyek ini:
+Pastikan Anda telah menginstal Node.js (versi 12 atau lebih baru) dan npm untuk menjalankan proyek ini.
 
-- [Node.js](https://nodejs.org/) (versi 12 atau lebih baru)
-- [npm](https://www.npmjs.com/) (biasanya terinstal dengan Node.js)
 
-## Instalasi
+## Menjalankan Server
 
-1. Clone repositori ini:
-
-   ```sh
-   git clone https://github.com/Riskypr/Bookshelf-API.git
-   ```
-
-2. Instal dependensi:
-
-   ```sh
-   npm install
-   ```
-
-## Cara menjalankan proyek
-
-Dalam direktori proyek, Anda dapat menjalankan perintah berikut:
-
-Menjalankan server dalam mode produksi.
+Untuk menjalankan server dalam mode produksi:
 
 ```sh
 npm start
 ```
 
-Menjalankan server dalam mode pengembangan menggunakan nodemon, yang akan memantau perubahan dalam kode dan me-restart server secara otomatis.
+Untuk menjalankan server dalam mode pengembangan dengan nodemon:
 
 ```sh
 npm run start-dev
 ```
 
-Menjalankan ESLint untuk memeriksa kode dan memastikan bahwa itu memenuhi standar kualitas kode yang ditentukan.
+## Endpoint yang Tersedia
+
+### POST /books
+
+Menambahkan buku baru ke dalam koleksi.
+
+#### Contoh Permintaan
+
+```json
+{
+  "name": "Harry Potter and the Philosopher's Stone",
+  "year": 1997,
+  "author": "J.K. Rowling",
+  "summary": "The novel follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry.",
+  "publisher": "Bloomsbury Publishing",
+  "pageCount": 223,
+  "readPage": 150,
+  "reading": true
+}
+```
+
+### GET /books
+
+Mengambil daftar buku yang tersedia.
+
+#### Parameter Query yang Tersedia
+
+- `name`: Filter berdasarkan nama buku (case insensitive).
+- `reading`: Filter buku sedang dibaca (`0` untuk tidak sedang dibaca, `1` untuk sedang dibaca).
+- `finished`: Filter buku sudah selesai (`0` untuk belum selesai, `1` untuk sudah selesai).
+
+### GET /books/{bookId}
+
+Mengambil detail buku berdasarkan ID.
+
+### PUT /books/{bookId}
+
+Memperbarui informasi buku berdasarkan ID.
+
+#### Contoh Permintaan
+
+```json
+{
+  "name": "Harry Potter and the Philosopher's Stone (Updated)",
+  "year": 1997,
+  "author": "J.K. Rowling",
+  "summary": "The novel follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry.",
+  "publisher": "Bloomsbury Publishing",
+  "pageCount": 223,
+  "readPage": 150,
+  "reading": true
+}
+```
+
+### DELETE /books/{bookId}
+
+Menghapus buku berdasarkan ID.
+
+## Pengujian
+
+Gunakan alat seperti Postman atau curl untuk menguji setiap endpoint API yang telah diimplementasikan.
+
+### Contoh Penggunaan curl
+
+#### Menambah Buku Baru
 
 ```sh
-npm run lint
+curl -X POST http://localhost:3000/books -H "Content-Type: application/json" -d '{
+  "name": "Harry Potter and the Philosopher's Stone",
+  "year": 1997,
+  "author": "J.K. Rowling",
+  "summary": "The novel follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry.",
+  "publisher": "Bloomsbury Publishing",
+  "pageCount": 223,
+  "readPage": 150,
+  "reading": true
+}'
 ```
+
+Pastikan untuk menyesuaikan informasi seperti port yang digunakan untuk server, alamat URL API, dan detail lainnya sesuai dengan konfigurasi Anda.
